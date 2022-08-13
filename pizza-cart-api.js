@@ -2,7 +2,7 @@ document.addEventListener('alpine:init', () => {
     Alpine.data('pizzaCartWithAPIWidget', function () {
         return {
             init() {
-                //call API to get all Pizza's
+                //call API to load automatically get all Pizza's
                 //set his.pizzas
                 axios
                     .get('https://pizza-cart-api.herokuapp.com/api/pizzas')
@@ -27,14 +27,14 @@ document.addEventListener('alpine:init', () => {
             },
 
             showCart() {
-                const url =`https://pizza-cart-api.herokuapp.com/api/pizza-cart/${this.cartId}/get`;
+                const url = `https://pizza-cart-api.herokuapp.com/api/pizza-cart/${this.cartId}/get`;
                 axios
                     .get(url)
                     .then((result) => {
                         this.cart = result.data;
                     });
             },
-            pizzaImage(pizza){
+            pizzaImage(pizza) {
                 return `/img/${pizza.size}.png`
             },
 
@@ -54,6 +54,18 @@ document.addEventListener('alpine:init', () => {
                     .post('https://pizza-cart-api.herokuapp.com/api/pizza-cart/add', params)
                     .then(() => {
                         this.message = "Pizza added to the cart"
+                        this.showCart();
+                    })
+            },
+            remove(pizza){
+                const params = {
+                    cart_code: this.cartId,
+                    pizza_id: pizza.id
+                }
+                axios
+                    .post('https://pizza-cart-api.herokuapp.com/api/pizza-cart/remove', params)
+                    .then(() => {
+                        this.message = "Pizza removed to the cart"
                         this.showCart();
                     })
             }

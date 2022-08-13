@@ -7,15 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="//unpkg.com/alpinejs" defer></script>
     <script src="pizza-cart-api.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    
     <style>
         .cart{
             border: 1px solid;
             background-color: rgb(206, 252, 252);
             padding: 0.5em;
             margin: 1em;
-            width: 18em;
+            width: 22em;
         }
     </style>
 
@@ -53,7 +54,13 @@
                     <template x-for="pizza in cart.pizzas">
                         <tr>
                             <td x-text="pizza.flavour"></td>
-                            <td x-text="pizza.qty"></td>
+                            <td >
+                                <span x-text="pizza.qty"></span>
+                                <button x-on:click="add(pizza)" >+</button>
+                                <button x-on:click="remove(pizza)">-</button>
+                                
+                            </td>
+                            
                             <td x-text="pizza.total"></td>
                         </tr>
                     </template>

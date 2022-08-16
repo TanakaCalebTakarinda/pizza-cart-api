@@ -1,6 +1,10 @@
+body {
+    background-color: rgb(102, 197, 252);
+    font-family: 'Times New Roman', Times, serif;
+}
 .Head{
     padding: 1em;
-    background-color: dodgerblue;
+    background-color: rgb(41, 140, 238);
 margin-bottom: 0.2cm;}
 
 .List{
@@ -31,3 +35,28 @@ margin-bottom: 0.2cm;}
     border-radius: 1em;
     background-color: rgb(182, 230, 10);
 }
+.nice{
+    text-align: center;
+}
+.cartt{
+    width: 9em;
+    background-color:azure;
+    color: rgb(61, 60, 60);
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+    border-radius: 0.5em}
+    .cHead{
+        text-align: left;
+    }
+    .T1{
+        margin-top: 5em;
+        background-color: rgb(105, 245, 92);
+    }
+
+    .messag {
+        padding: 1em;
+        font-weight: bold;
+        background-color: rgb(177, 196, 195);
+    }
+

@@ -35,7 +35,7 @@ document.addEventListener('alpine:init', () => {
                     });
             },
             pizzaImage(pizza) {
-                return `./img/${pizza.size}.png`
+                return `./img/${pizza.size}.jpg`
             },
 
             message: 'Eating Pizza',
@@ -45,7 +45,7 @@ document.addEventListener('alpine:init', () => {
             cart: { total: 0 },
             sshowCart: false,
             paymentAmount: 0,
-            payNow:true,
+            payNow:false,
             paymentMessage:'',
 
             add(pizza) {
@@ -88,8 +88,8 @@ document.addEventListener('alpine:init', () => {
         
                         setTimeout(() => {
                             this.payNow = false;
-                            
-                        },3000);}
+                            this.cart= { total: 0 };
+                        },5000);}
                         
                         else{
                             this.paymentMessage = 'Payment failed'

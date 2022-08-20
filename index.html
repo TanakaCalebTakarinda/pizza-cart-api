@@ -55,6 +55,7 @@
         </div>
         <div>
             Who is buying<input type="text" x-model="username">
+            <button x-on:click="createCart()">Enter</button>
         </div>
         <strong x-text="pizzas.length"></strong>
         <div class="nice">
@@ -62,7 +63,7 @@
                 <button class="cartt" x-on:click="sshowCart=true">
                     <img src="./pizzapic/basket.jpg" width="40" alt="">Show Cart
                 </button>
-                <strong> R<span x-text="cart.total"></span></strong>
+                <strong> R<span x-text="cart.total.toFixed(2)"></span></strong>
 
 
             </div>

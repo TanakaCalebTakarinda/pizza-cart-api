@@ -10,20 +10,18 @@ document.addEventListener('alpine:init', () => {
                         //console.log(result.data)
                         this.pizzas = result.data.pizzas
                     })
-                    .then(() => {
-                        return this.createCart();
-
-                    })
-                    .then((result) => {
-                        this.cartId = result.data.cart_code;
-
-                    });
+                   
 
 
             },
             createCart() {
                 ///api/pizza-cart/create
-                return axios.get('https://pizza-cart-api.herokuapp.com/api/pizza-cart/create?username' + this.username)
+                return axios.get('https://pizza-cart-api.herokuapp.com/api/pizza-cart/create?username=' + this.username)
+                
+                .then((result) => {
+                    this.cartId = result.data.cart_code;
+
+                });
             },
 
             showCart() {
@@ -39,7 +37,7 @@ document.addEventListener('alpine:init', () => {
             },
 
             message: 'Eating Pizza',
-            username: 'TanakaCalebTakarinda',
+            username: '',
             cartId: '',
             pizzas: [],
             cart: { total: 0 },
@@ -89,7 +87,8 @@ document.addEventListener('alpine:init', () => {
                         setTimeout(() => {
                             this.payNow = false;
                             this.cart= { total: 0 };
-                        },5000);}
+                            location.reload()
+                        },2000);}
                         
                         else{
                             this.paymentMessage = 'Payment failed'
